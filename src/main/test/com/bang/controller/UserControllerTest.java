@@ -48,4 +48,26 @@ public class UserControllerTest {
         //then
         assertEquals(HttpStatus.NOT_FOUND,response.getStatusCode());
     }
+
+    @Test
+    public void shouldReturnCreatedWhenGiveUser() throws Exception {
+        //given
+        User user = new User();
+        when(userService.createUser(user)).thenReturn(true);
+        //when
+        ResponseEntity response = userController.register(user);
+        //then
+        assertEquals(HttpStatus.CREATED,response.getStatusCode());
+    }
+
+    @Test
+    public void shouldReturnConflictWhenGiveUser() throws Exception {
+        //given
+        User user = new User();
+        when(userService.createUser(user)).thenReturn(false);
+        //when
+        ResponseEntity response = userController.register(user);
+        //then
+        assertEquals(HttpStatus.CONFLICT,response.getStatusCode());
+    }
 }
