@@ -16,7 +16,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(method = RequestMethod.POST,value = "/login")
+    @RequestMapping(method = RequestMethod.POST, value = "/login")
     public ResponseEntity login(@RequestBody User user) {
         boolean validation = userService.validateUser(user);
         if (validation) {
@@ -28,7 +28,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity register(@RequestBody User user) {
         boolean isCreated = userService.createUser(user);
-        if(isCreated){
+        if (isCreated) {
             return new ResponseEntity(HttpStatus.CREATED);
         }
         return new ResponseEntity(HttpStatus.CONFLICT);

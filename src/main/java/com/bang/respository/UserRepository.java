@@ -1,34 +1,36 @@
 package com.bang.respository;
 
 import com.bang.controller.User;
-import org.springframework.stereotype.Component;
+import com.bang.mapper.FirstAppSessionFactory;
+import com.bang.mapper.UserMapper;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
 
-@Component
+@Repository
 public class UserRepository {
 
-    private static List<User> users = new ArrayList<>();
+    SqlSessionFactory sqlSessionFactory;
 
-    static {
-        users.add(new User("name1", "password1"));
-        users.add(new User("name2", "password2"));
-        users.add(new User("name3", "password3"));
+    private final SqlSession sqlSession;
+    private final UserMapper mapper;
+
+    public UserRepository() {
+        this.sqlSessionFactory = FirstAppSessionFactory.getInstance();
+        sqlSession = sqlSessionFactory.openSession();
+
+        mapper = sqlSession.getMapper(UserMapper.class);
     }
 
     public User getUserByName(String name) {
-        for (User user : users) {
-            if (user.getName().equals(name)) {
-                return user;
-            }
-        }
-        return null;
+        return mapper.getUserByName(name);
     }
 
     public boolean createUser(User user) {
         if (getUserByName(user.getName()) == null) {
-            users.add(user);
+            mapper.insert(user);
+            sqlSession.commit();
             return true;
         }
         return false;

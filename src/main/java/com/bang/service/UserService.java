@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+
     @Autowired
     public UserRepository userRepository;
+
 
     public boolean validateUser(User user) {
         User existUser = userRepository.getUserByName(user.getName());
