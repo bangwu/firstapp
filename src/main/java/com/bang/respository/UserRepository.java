@@ -18,11 +18,19 @@ public class UserRepository {
     }
 
     public User getUserByName(String name) {
-        for(User user : users){
-            if( user.getName().equals(name)){
+        for (User user : users) {
+            if (user.getName().equals(name)) {
                 return user;
             }
         }
         return null;
+    }
+
+    public boolean createUser(User user) {
+        if (getUserByName(user.getName()) == null) {
+            users.add(user);
+            return true;
+        }
+        return false;
     }
 }

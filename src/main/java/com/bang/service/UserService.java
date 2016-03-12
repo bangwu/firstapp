@@ -16,6 +16,6 @@ public class UserService {
     }
 
     public boolean createUser(User user) {
-        return true;
+        return userRepository.createUser(user);
     }
 }
