@@ -8,7 +8,8 @@ import java.io.IOException;
 
 public class FirstAppSessionFactory {
     private static SqlSessionFactory sqlSessionFactory;
-    static{
+
+    static {
         if (sqlSessionFactory == null) {
             try {
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("databaseConfig.xml"));
@@ -17,7 +18,6 @@ public class FirstAppSessionFactory {
             }
         }
     }
-
     private FirstAppSessionFactory() {
     }
 
@@ -26,5 +26,8 @@ public class FirstAppSessionFactory {
         return sqlSessionFactory;
     }
 
+    public static <T> T getMapper(Class<T> clazz) {
+        return sqlSessionFactory.openSession(true).getMapper(clazz);
+    }
 
 }
