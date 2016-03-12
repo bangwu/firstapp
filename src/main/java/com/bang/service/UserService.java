@@ -1,6 +1,6 @@
 package com.bang.service;
 
-import com.bang.controller.User;
+import com.bang.model.User;
 import com.bang.respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

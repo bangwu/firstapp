@@ -1,8 +1,8 @@
 package com.bang.respository;
 
-import com.bang.controller.User;
 import com.bang.mapper.FirstAppSessionFactory;
 import com.bang.mapper.UserMapper;
+import com.bang.model.User;
 import org.springframework.stereotype.Repository;
 
 

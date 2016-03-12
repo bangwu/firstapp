@@ -1,6 +1,6 @@
 package com.bang.service;
 
-import com.bang.controller.User;
+import com.bang.model.User;
 import com.bang.respository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;

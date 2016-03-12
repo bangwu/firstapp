@@ -1,4 +1,4 @@
-package com.bang.controller;
+package com.bang;
 
 
 import java.util.Arrays;

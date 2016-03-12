@@ -1,6 +1,7 @@
 package com.bang.mapper;
 
-import com.bang.controller.User;
+
+import com.bang.model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 

@@ -1,5 +1,6 @@
 package com.bang.controller;
 
+import com.bang.model.User;
 import com.bang.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
